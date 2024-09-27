@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TEAW Tier List</title>
+</head>
+<body>
+
+    <h1 contenteditable="true" class="header">TEAW Tier List (WIP)</h1>
+    <div class="tiers">
+        <h2 contenteditable="true" class="header">S Tier</h2>
+        <div class="tier" id="S">
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+        </div>
+        <h2 contenteditable="true" class="header">A Tier</h2>
+        <div class="tier" id="A">
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+        </div>
+        <h2 contenteditable="true" class="header">B Tier</h2>
+        <div class="tier" id="B">
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+        </div>
+        <h2 contenteditable="true" class="header">C Tier</h2>
+        <div class="tier" id="C">
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+        </div>
+        <h2 class="header">TEAW Cast</h2>
+        <div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="members"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/js/createPlayerCards.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

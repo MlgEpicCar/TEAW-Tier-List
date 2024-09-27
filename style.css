@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #171717;
+}
+
+.header {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%; /* Full width for grid */
+}
+
+.member {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: grab;
+    background-color: #171717;
+    transition: transform 0.2s; /* Smooth scale on hover */
+}
+
+.member:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.member:active {
+    cursor: grabbing;
+}
+
+.tiers {
+    display: flex;
+    flex-direction: column; /* Stack tiers vertically */
+    gap: 20px;
+    width: 100%; /* Make the tiers container full width */
+}
+
+.tier {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%; /* Make each tier take full width */
+    min-height: 150px; /* Minimum height for tiers */
+    display: flex;
+    flex-direction: row;
+    background-color: #929292; /* White background for visibility */
+}
+
+.tier p {
+    margin: 0; /* Reset margin for tier text */
+}
+
+.tier .member {
+    width: 150px; /* Keep the card width consistent in the tier */
+    margin: 5px 0; /* Adjust margins for vertical stacking */
+}

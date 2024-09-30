@@ -5,6 +5,8 @@ body {
     align-items: center;
     padding: 20px;
     background-color: #171717;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .header {
@@ -56,6 +58,7 @@ p {
     min-height: 150px; /* Minimum height for tiers */
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     background-color: #929292; /* White background for visibility */
 }
 

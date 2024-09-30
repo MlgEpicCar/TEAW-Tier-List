@@ -12,37 +12,55 @@ function drag(event) {
 
 function drop(event) {
     event.preventDefault();
-
+    
     // Prevent dropping on another item
-    if (event.target.className !== "drop-zone") {
+    if (!event.target.classList.contains("drop-zone")) {
         return;
     }
 
     const data = event.dataTransfer.getData("text");
-    
+    const originalItemId = event.dataTransfer.getData("id");
+    const originalItem = document.getElementById(originalItemId);
+
+    // If the original item exists, remove it
+    if (originalItem) {
+        originalItem.remove();
+    }
+
     // Create a new div for the dropped item
     const newItem = document.createElement("div");
-    newItem.className = "item";
+    newItem.className = "item"; // Ensure this class is styled appropriately
     newItem.innerHTML = data;
     newItem.draggable = true;
+    newItem.id = `member-${Date.now()}`; // Unique ID
 
     // Add event listeners for the new item
     newItem.ondragstart = drag;
-    newItem.ondragend = function () {
-        this.remove(); // Remove item when dragged out
-    };
+    newItem.ondragend = () => newItem.remove(); // Remove item when dragged out
 
-    // Append to the drop zone
-    event.target.appendChild(newItem);
+    // Determine the position to insert the new item
+    const dropZone = event.target;
+    const items = dropZone.querySelectorAll('.item');
 
-    // Remove the original item
-    const originalItemId = event.dataTransfer.getData("id");
-    const originalItem = document.getElementById(originalItemId);
-    originalItem.remove();
+    let insertBefore = null;
+    items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (event.clientY < rect.top + rect.height / 2) {
+            insertBefore = item; // Set the item to insert before
+        }
+    });
+
+    // Insert the new item at the determined position
+    if (insertBefore) {
+        dropZone.insertBefore(newItem, insertBefore);
+    } else {
+        dropZone.appendChild(newItem); // Fallback to append if no position found
+    }
 
     // Adjust the height of the drop zone
-    adjustDropZoneHeight(event.target);
+    adjustDropZoneHeight(dropZone);
 }
+
 
 function adjustDropZoneHeight(dropZone) {
     const items = dropZone.querySelectorAll('.item');
